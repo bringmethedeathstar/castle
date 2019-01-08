@@ -3,7 +3,9 @@ export default {};
 </script>
 
 <template>
-  <div></div>
+  <header>
+    <h1>Castle</h1>
+  </header>
 </template>
 
 <style scoped>

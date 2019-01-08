@@ -1,17 +1,17 @@
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Top from "./components/Top";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    Top
   }
 };
 </script>
 
 <template>
   <div id="app">
-    <HelloWorld/>
+    <Top/>
   </div>
 </template>
 
