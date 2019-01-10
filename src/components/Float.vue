@@ -67,6 +67,7 @@ export default {
 .float {
   width: 25vw;
   height: 25vw;
+  min-width: 330px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
