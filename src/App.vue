@@ -1,17 +1,17 @@
 <script>
-import Top from "./components/Top";
+import Float from "./components/Float";
 
 export default {
   name: "app",
   components: {
-    Top
+    Float
   }
 };
 </script>
 
 <template>
   <div id="app">
-    <Top/>
+    <Float/>
   </div>
 </template>
 
@@ -22,6 +22,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
