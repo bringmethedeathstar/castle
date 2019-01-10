@@ -69,6 +69,7 @@ export default {
   height: 25vw;
   min-width: 330px;
   margin: 0 auto;
+  margin-bottom: 30px;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
