@@ -16,7 +16,7 @@ export default {
 
   computed: {
     float() {
-      return `translate3d(${this.x / 50}px, ${this.y / 50}px, 0)`;
+      return `translate3d(${this.x / 100}px, ${this.y / 100}px, 0)`;
     },
 
     castle() {
