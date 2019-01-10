@@ -42,26 +42,31 @@ export default {
   <div class="float" :style="{ transform: float }">
     <img
       class="float-image castle-building"
-      alt="Castle Building"
+      alt="Castle Building Image Layer"
       :style="{ transform: castle }"
       src="../assets/castle.svg"
     >
     
     <img
       class="float-image stars"
-      alt="Stars"
+      alt="Stars Image Layer"
       :style="{ transform: stars }"
       src="../assets/stars.svg"
     >
     
-    <img class="float-image moon" alt="Stars" :style="{ transform: moon }" src="../assets/moon.svg">
+    <img
+      class="float-image moon"
+      alt="Moon Image Layer"
+      :style="{ transform: moon }"
+      src="../assets/moon.svg"
+    >
   </div>
 </template>
 
 <style scoped lang="scss">
 .float {
-  width: 500px;
-  height: 500px;
+  width: 25vw;
+  height: 25vw;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -75,18 +80,20 @@ export default {
 .float-image {
   display: block;
   position: absolute;
+  width: 100%;
+  height: 100%;
   left: 0;
   top: 0;
   transition: inherit;
   will-change: transform;
 }
 
-img.castle-building {
+.castle-building {
   top: 10px;
 }
 
-img.stars {
+.stars {
   top: -100px;
-  left: -30px;
+  left: -50px;
 }
 </style>
