@@ -1,10 +1,13 @@
 <script>
 import Float from "./components/Float";
+import Input from "./components/Input";
 
 export default {
   name: "app",
+
   components: {
-    Float
+    Float,
+    Input
   }
 };
 </script>
@@ -15,7 +18,7 @@ export default {
 
     <h1>castle.</h1>
 
-    <input type="text" placeholder="search me">
+    <Input/>
   </div>
 </template>
 
@@ -30,19 +33,5 @@ $black: #324048;
   color: $black;
   padding: 30px;
   font-weight: bold;
-}
-
-input {
-  width: 25vw;
-  min-width: 330px;
-  border: 0;
-  border-bottom: 2px solid $black;
-  padding: 10px 15px;
-  text-align: center;
-  font-weight: bold;
-
-  &:focus {
-    outline: none;
-  }
 }
 </style>
