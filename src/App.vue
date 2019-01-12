@@ -1,13 +1,15 @@
 <script>
-import Float from "./components/Float";
-import Input from "./components/Input";
+import Float from "@/components/Float";
+import Input from "@/components/Input";
+import Host from "@/components/Host";
 
 export default {
   name: "app",
 
   components: {
     Float,
-    Input
+    Input,
+    Host
   }
 };
 </script>
@@ -19,6 +21,8 @@ export default {
     <h1>castle.</h1>
 
     <Input/>
+
+    <Host/>
   </div>
 </template>
 
