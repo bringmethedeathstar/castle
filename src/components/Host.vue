@@ -15,7 +15,7 @@ export default {
         "http://api.allorigins.ml/get?url=" + encodeURIComponent(this.address)
       );
 
-      console.log(res.data.contents);
+      console.log(res.data.contents.match(/<body[^>]*>[\s\S]*<\/body>/gi));
     }
   },
 
