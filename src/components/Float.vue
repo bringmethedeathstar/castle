@@ -68,6 +68,7 @@ export default {
   width: 25vw;
   height: 25vw;
   min-width: 330px;
+  min-height: 330px;
   margin: 0 auto;
   margin-bottom: 30px;
   position: relative;
