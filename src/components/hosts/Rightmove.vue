@@ -1,5 +1,5 @@
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapActions } from "vuex";
 import axios from "axios";
 
 export default {
@@ -46,14 +46,14 @@ export default {
         this.place.postcode = meta.location.postcode;
         this.place.type = meta.propertyInfo.furnishedType;
 
-        this.setPlace(this.place);
+        this.place(this.place);
       } catch (e) {
         // eslint-disable-next-line
         console.error(e);
       }
     },
 
-    ...mapMutations(["setPlace"])
+    ...mapActions(["place"])
   },
 
   computed: mapState(["url"]),

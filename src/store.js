@@ -52,5 +52,10 @@ export default new Vuex.Store({
 
       commit('setSearch');
     },
+
+    place({ commit }, place) {
+
+      commit('setPlace', place);
+    },
   },
 });
