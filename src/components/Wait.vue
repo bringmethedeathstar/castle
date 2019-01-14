@@ -1,13 +1,5 @@
-<script>
-import { mapState } from "vuex";
-
-export default {
-  computed: mapState(["mode"])
-};
-</script>
-
 <template>
-  <div v-if="mode === 'wait'" class="wait"></div>
+  <div class="wait"></div>
 </template>
 
 <style lang="scss" scoped>
