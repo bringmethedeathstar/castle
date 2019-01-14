@@ -27,6 +27,29 @@ export default new Vuex.Store({
     setHost(state, host) {
       state.host = host;
     },
+
+    setSearch(state) {
+      state.search = Date.now();
+    },
+
+    setPlace(state, place) {
+      state.place = place;
+    },
   },
-  actions: {},
+
+  actions: {
+    search({ commit }, url) {
+      commit('setUrl', url);
+
+      commit(
+        'setHost',
+        url
+          .replace(/.*:\/\//, '')
+          .replace('www.', '')
+          .split('.')[0]
+      );
+
+      commit('setSearch');
+    },
+  },
 });
