@@ -27,6 +27,11 @@ export default {
           .replace("to rent", "")
           .replace("to let", "");
 
+        this.property.description = data.replace(
+          /[\s\S]*<.*itemprop="description".*>(.*)<\/.*>[\s\S]*/gm,
+          "$1"
+        );
+
         this.property.address = data.replace(
           /[\s\S]*<meta itemprop="streetAddress" content="(.*)" \/>[\s\S]*/gm,
           "$1"
@@ -67,3 +72,5 @@ export default {
   }
 };
 </script>
+
+<template></template>
