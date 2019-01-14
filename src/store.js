@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    mode: 'blank',
     url: '',
     host: '',
     search: '',
@@ -21,6 +22,10 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    setMode(state, mode) {
+      state.mode = mode;
+    },
+
     setUrl(state, url) {
       state.url = url;
     },
@@ -39,7 +44,13 @@ export default new Vuex.Store({
   },
 
   actions: {
+    mode({ commit }, mode) {
+      commit('setMode', mode);
+    },
+
     search({ commit }, url) {
+      commit('setMode', 'wait');
+
       commit('setUrl', url);
 
       commit(
@@ -54,6 +65,7 @@ export default new Vuex.Store({
     },
 
     place({ commit }, place) {
+      commit('setMode', 'edit');
 
       commit('setPlace', place);
     },
