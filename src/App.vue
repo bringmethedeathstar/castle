@@ -2,6 +2,7 @@
 import Float from "@/components/Float";
 import Input from "@/components/Input";
 import Host from "@/components/Host";
+import Wait from "@/components/Wait";
 
 export default {
   name: "app",
@@ -9,13 +10,16 @@ export default {
   components: {
     Float,
     Input,
-    Host
+    Host,
+    Wait
   }
 };
 </script>
 
 <template>
   <div id="app">
+    <Wait/>
+
     <Float/>
 
     <h1>castle.</h1>
