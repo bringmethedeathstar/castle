@@ -9,8 +9,8 @@ export default new Vuex.Store({
     host: '',
   },
   mutations: {
-    setAddress(state, address) {
-      state.address = address;
+    setUrl(state, url) {
+      state.url = url;
     },
 
     setHost(state, host) {
