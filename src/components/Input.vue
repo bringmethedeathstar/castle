@@ -27,7 +27,7 @@ $black: #324048;
 
 input {
   width: 25vw;
-  min-width: 330px;
+  min-width: 450px;
   border: 0;
   border-bottom: 2px solid $black;
   padding: 10px 15px;
