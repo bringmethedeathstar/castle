@@ -5,8 +5,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    address: '',
+    url: '',
     host: '',
+    search: '',
+    place: {
+      title: '',
+      address: '',
+      postcode: '',
+      price: 0,
+      rooms: 0,
+      type: '',
+      pets: null,
+      propertyId: '',
+    },
   },
   mutations: {
     setUrl(state, url) {
