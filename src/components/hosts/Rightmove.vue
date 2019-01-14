@@ -48,7 +48,8 @@ export default {
 
         this.setPlace(this.place);
       } catch (e) {
-        console.log(e);
+        // eslint-disable-next-line
+        console.error(e);
       }
     },
 
