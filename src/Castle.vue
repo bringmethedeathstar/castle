@@ -1,30 +1,40 @@
 <script>
+import { mapState } from "vuex";
+
 import Float from "@/components/Float";
 import Input from "@/components/Input";
 import Host from "@/components/Host";
 import Wait from "@/components/Wait";
+import Edit from "@/components/Edit";
 
 export default {
   components: {
     Float,
     Input,
     Host,
-    Wait
-  }
+    Wait,
+    Edit
+  },
+
+  computed: mapState(["mode"])
 };
 </script>
 
 <template>
   <div id="castle">
-    <Wait/>
+    <Wait v-if="mode === 'wait'"/>
 
-    <Float/>
+    <Edit v-if="mode === 'edit'"/>
 
-    <h1>castle.</h1>
+    <template v-else>
+      <Float/>
 
-    <Input/>
+      <h1>castle.</h1>
 
-    <Host/>
+      <Input/>
+
+      <Host/>
+    </template>
   </div>
 </template>
 
