@@ -5,7 +5,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      place: {}
+      property: {}
     };
   },
 
@@ -22,31 +22,31 @@ export default {
           data.replace(/[\s\S]*}\('property',({.*})[\s\S]*/gm, "$1")
         );
 
-        this.place.title = data
+        this.property.title = data
           .replace(/[\s\S]*<.*itemprop="name".*>(.*)<\/.*>[\s\S]*/gm, "$1")
           .replace("to rent", "")
           .replace("to let", "");
 
-        this.place.address = data.replace(
+        this.property.address = data.replace(
           /[\s\S]*<meta itemprop="streetAddress" content="(.*)" \/>[\s\S]*/gm,
           "$1"
         );
 
         if (data.match(/no pets|pets not/i)) {
-          this.place.pets = false;
+          this.property.pets = false;
         } else if (
           data.match(/pets considered|pets allowed|pets permitted|pets by/i)
         ) {
-          this.place.pets = true;
+          this.property.pets = true;
         }
 
-        this.place.propertyId = meta.propertyId;
-        this.place.rooms = meta.propertyInfo.beds;
-        this.place.price = meta.propertyInfo.price;
-        this.place.postcode = meta.location.postcode;
-        this.place.type = meta.propertyInfo.furnishedType;
+        this.property.propertyId = meta.propertyId;
+        this.property.rooms = meta.propertyInfo.beds;
+        this.property.price = meta.propertyInfo.price;
+        this.property.postcode = meta.location.postcode;
+        this.property.type = meta.propertyInfo.furnishedType;
 
-        this.place(this.place);
+        this.place(this.property);
       } catch (e) {
         // eslint-disable-next-line
         console.error(e);
