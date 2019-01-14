@@ -18,6 +18,7 @@ export default new Vuex.Store({
       type: '',
       pets: null,
       propertyId: '',
+      description: '',
     },
   },
 
