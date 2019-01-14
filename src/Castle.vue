@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div id="app">
+  <div id="castle">
     <Wait/>
 
     <Float/>
@@ -31,7 +31,7 @@ export default {
 <style lang="scss">
 $black: #324048;
 
-#app {
+#castle {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
