@@ -5,8 +5,6 @@ import Host from "@/components/Host";
 import Wait from "@/components/Wait";
 
 export default {
-  name: "app",
-
   components: {
     Float,
     Input,
