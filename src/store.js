@@ -19,6 +19,7 @@ export default new Vuex.Store({
       propertyId: '',
     },
   },
+
   mutations: {
     setUrl(state, url) {
       state.url = url;
