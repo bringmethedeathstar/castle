@@ -16,5 +16,3 @@ export default {
   <component v-if="host" :is="host"></component>
 </template>
 
-<style lang="scss">
-</style>
