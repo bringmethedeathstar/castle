@@ -39,6 +39,9 @@ export default {
 </template>
 
 <style lang="scss">
+@import "~bootstrap/scss/bootstrap-reboot.scss";
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
 $black: #324048;
 
 #castle {

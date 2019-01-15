@@ -26,14 +26,19 @@ export default {
 </script>
 
 <template>
-  <div>
-    <textarea @input="compile" :value="markdown" name="markdown" rows="10"></textarea>
+  <div class="row">
+    <div class="col-6">
+      <textarea @input="compile" :value="markdown" name="markdown" rows="10"></textarea>
+    </div>
 
-    <hr>
-
-    <div v-html="compiled"></div>
+    <div class="col-6">
+      <div v-html="compiled"></div>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+textarea {
+  width: 100%;
+}
 </style>
