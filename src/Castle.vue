@@ -53,4 +53,8 @@ $black: #324048;
   padding: 30px;
   font-weight: bold;
 }
+
+img {
+  width: 100%;
+}
 </style>

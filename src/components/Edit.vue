@@ -28,6 +28,12 @@ export default {
 <template>
   <div class="row">
     <div class="col-6">
+      <div class="row">
+        <div class="col-4" v-for="img in place.images" :key="img">
+          <img :src="img" alt="owo an image">
+        </div>
+      </div>
+
       <textarea @input="compile" :value="markdown" name="markdown" rows="10"></textarea>
     </div>
 
