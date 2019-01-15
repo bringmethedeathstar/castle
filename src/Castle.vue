@@ -20,10 +20,17 @@ export default {
   computed: mapState(["mode"]),
 
   methods: {
-    async test() {
-      res = await axios.get(`.netlify/functions/fetch?url=${this.url}`);
-
-      console.log(res);
+    test() {
+      axios
+        .get(
+          `.netlify/functions/fetch?url=https://www.rightmove.co.uk/property-to-rent/property-69395305.html`
+        )
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
 };

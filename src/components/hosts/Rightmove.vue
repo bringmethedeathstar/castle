@@ -13,10 +13,12 @@ export default {
     async fetch() {
       try {
         let res = await axios.get(
-          "http://api.allorigins.ml/get?url=" + encodeURIComponent(this.url)
+          ".netlify/functions/fetch?url=" + encodeURIComponent(this.url)
         );
 
-        let data = res.data.contents;
+        let data = res.data;
+
+        console.log(data);
 
         let meta = JSON.parse(
           data.replace(/[\s\S]*}\('property',({.*})[\s\S]*/gm, "$1")

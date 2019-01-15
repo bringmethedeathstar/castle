@@ -1,11 +1,12 @@
 const axios = require('axios');
+
 exports.handler = (event, context, callback) => {
   axios
-    .get('https://jsonplaceholder.typicode.com/todos/1')
+    .get(event.queryStringParameters.url)
     .then(res => {
       callback(null, {
         statusCode: 200,
-        body: res.data.title,
+        body: res.data,
       });
     })
     .catch(err => {

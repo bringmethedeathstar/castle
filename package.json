@@ -4,11 +4,8 @@
   "private": true,
   "scripts": {
     "lint": "vue-cli-service lint",
-    "dev": "npm run start:vue",
-    "start:vue": "vue-cli-service serve",
-    "build:vue": "vue-cli-service build; netlify-lambda build src/lambda",
-    "start:lambda": "netlify-lambda serve src/lambda",
-    "build:lambda": "netlify-lambda build src/lambda"
+    "build": "vue-cli-service build; netlify-lambda build src/lambda",
+    "dev": "vue-cli-service serve"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -26,6 +23,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-netlify-lambda": "^0.1.0",
     "vue-template-compiler": "^2.5.21"
   },
   "eslintConfig": {
