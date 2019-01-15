@@ -18,8 +18,6 @@ export default {
 
         let data = res.data;
 
-        console.log(data);
-
         let meta = JSON.parse(
           data.replace(/[\s\S]*}\('property',({.*})[\s\S]*/gm, "$1")
         );
@@ -29,10 +27,12 @@ export default {
           .replace("to rent", "")
           .replace("to let", "");
 
-        this.property.description = data.replace(
-          /[\s\S]*<.*itemprop="description".*>(.*)<\/.*>[\s\S]*/gm,
-          "$1"
-        );
+        // this.property.description = data.replace(
+        //   /[\s\S]*<.*itemprop="description".*>(.*)<\/.*>[\s\S]*/gm,
+        //   "$1"
+        // );
+
+        this.property.description = "tba";
 
         this.property.address = data.replace(
           /[\s\S]*<meta itemprop="streetAddress" content="(.*)" \/>[\s\S]*/gm,
