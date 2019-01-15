@@ -27,6 +27,15 @@ export default {
           .replace("to rent", "")
           .replace("to let", "");
 
+        this.property.images = data
+          .match(/<meta itemprop="contentUrl" content=".*" \/>/gm)
+          .map(str =>
+            str.replace(
+              /<meta itemprop="contentUrl" content="(.*)" \/>/gm,
+              "$1"
+            )
+          );
+
         // this.property.description = data.replace(
         //   /[\s\S]*<.*itemprop="description".*>(.*)<\/.*>[\s\S]*/gm,
         //   "$1"
