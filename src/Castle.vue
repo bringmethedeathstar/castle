@@ -1,6 +1,5 @@
 <script>
 import { mapState } from "vuex";
-import axios from "axios";
 
 import Float from "@/components/Float";
 import Input from "@/components/Input";
@@ -17,22 +16,7 @@ export default {
     Edit
   },
 
-  computed: mapState(["mode"]),
-
-  methods: {
-    test() {
-      axios
-        .get(
-          `.netlify/functions/fetch?url=https://www.rightmove.co.uk/property-to-rent/property-69395305.html`
-        )
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-  }
+  computed: mapState(["mode"])
 };
 </script>
 
@@ -50,10 +34,6 @@ export default {
       <Input/>
 
       <Host/>
-
-      <hr>
-
-      <button @click="test">test</button>
     </template>
   </div>
 </template>

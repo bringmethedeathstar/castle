@@ -11,6 +11,7 @@ export default new Vuex.Store({
     search: '',
     place: {
       title: '',
+      images: [],
       address: '',
       postcode: '',
       price: 0,
