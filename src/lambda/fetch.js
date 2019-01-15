@@ -1,16 +1,14 @@
-import fetch from 'node-fetch';
-
-const API_ENDPOINT =
-  'https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke';
-
-exports.handler = async (event, context) => {
-  const url = event.queryStringParameters.url;
-
-  return fetch(API_ENDPOINT)
-    .then(response => response.json())
-    .then(data => ({
-      statusCode: 200,
-      body: `${data.setup} ${data.punchline} *BA DUM TSSS*`,
-    }))
-    .catch(error => ({ statusCode: 422, body: String(error) }));
+const axios = require('axios');
+exports.handler = (event, context, callback) => {
+  axios
+    .get('https://jsonplaceholder.typicode.com/todos/1')
+    .then(res => {
+      callback(null, {
+        statusCode: 200,
+        body: res.data.title,
+      });
+    })
+    .catch(err => {
+      callback(err);
+    });
 };
