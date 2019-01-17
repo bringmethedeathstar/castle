@@ -54,11 +54,11 @@ export default {
       <textarea @input="compile" :value="markdown" name="markdown" rows="10"></textarea>
     </div>
 
-    <div class="col-2">
+    <div class="col">
       <div class="split"></div>
     </div>
 
-    <div class="col-4">
+    <div class="trello-contain">
       <div class="trello-card">
         <img :src="image" alt="owo an image">
 
@@ -80,7 +80,7 @@ export default {
 input,
 textarea {
   width: 100%;
-  border: 2px dashed #ebeef0;
+  border: 2px dashed #324048;
   padding: 15px;
   text-align-last: left;
   margin-bottom: 30px;
@@ -93,7 +93,18 @@ textarea {
   margin: 0 auto;
 }
 
+.trello-contain {
+  flex: 0 0 400px;
+  width: 400px;
+  max-width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+}
+
 .trello-card {
+  width: 370px;
+  position: fixed;
   border-radius: 2px;
   background-color: #ebeef0;
   color: #17394d;
@@ -112,5 +123,7 @@ textarea {
 .trello-body {
   text-align: left;
   padding: 20px 40px;
+  max-height: 300px;
+  overflow: scroll;
 }
 </style>
