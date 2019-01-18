@@ -22,7 +22,7 @@ export default {
   <input type="text" placeholder="search me" v-model="url" @keyup.enter="doSearch">
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $accent: #bba3d0;
 
 input {

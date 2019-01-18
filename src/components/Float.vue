@@ -63,7 +63,7 @@ export default {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .float {
   width: 25vw;
   height: 25vw;
