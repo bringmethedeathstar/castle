@@ -23,13 +23,13 @@ export default {
 </template>
 
 <style lang="scss">
-$black: #324048;
+$accent: #bba3d0;
 
 input {
   width: 25vw;
-  min-width: 450px;
+  min-width: 600px;
   border: 0;
-  border-bottom: 2px solid $black;
+  border-bottom: 2px dashed $accent;
   padding: 10px 15px;
   text-align: center;
   font-weight: bold;

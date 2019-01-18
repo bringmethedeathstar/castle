@@ -1,5 +1,5 @@
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 import marked from "marked";
 
 export default {
@@ -45,7 +45,13 @@ export default {
     <div class="col-6">
       <div class="row">
         <div class="col-4" v-for="img in place.images" :key="img">
-          <img @click="image = img" class="image-select" :src="img" alt="owo an image">
+          <img
+            @click="image = img"
+            class="image-select"
+            :class="{ active: image == img }"
+            :src="img"
+            alt="owo an image"
+          >
         </div>
       </div>
 
@@ -72,25 +78,42 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+$accent: #bba3d0;
+
 .image-select {
   margin-bottom: 30px;
   cursor: pointer;
+  border: 2px dashed transparent;
+  transition: border-color 0.3s;
+
+  &.active {
+    border-color: $accent;
+  }
 }
 
 input,
 textarea {
   width: 100%;
-  border: 2px dashed #324048;
+  border: 2px dashed $accent;
   padding: 15px;
   text-align-last: left;
   margin-bottom: 30px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea {
+  margin-bottom: 0;
+  min-height: 330px;
 }
 
 .split {
   width: 1px;
-  height: 100%;
-  background-color: #ebeef0;
-  margin: 0 auto;
+  height: calc(100% + 60px);
+  margin: -30px auto;
+  border-left: 1px dashed $accent;
 }
 
 .trello-contain {
@@ -112,6 +135,8 @@ textarea {
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
+  top: 50%;
+  transform: translateY(-50%);
 
   h1 {
     font-size: 20px;

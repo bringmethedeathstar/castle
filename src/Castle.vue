@@ -22,19 +22,21 @@ export default {
 
 <template>
   <div id="castle">
-    <Wait v-if="mode === 'wait'"/>
+    <div class="casle-contain">
+      <Wait v-if="mode === 'wait'"/>
 
-    <Edit v-if="mode === 'edit'"/>
+      <Edit v-if="mode === 'edit'"/>
 
-    <template v-else>
-      <Float/>
+      <template v-else>
+        <Float/>
 
-      <h1>castle.</h1>
+        <h1>castle.</h1>
 
-      <Input/>
+        <Input/>
 
-      <Host/>
-    </template>
+        <Host/>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -43,6 +45,7 @@ export default {
 @import "~bootstrap/scss/bootstrap-grid.scss";
 
 $black: #324048;
+$accent: #bba3d0;
 
 #castle {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -50,8 +53,17 @@ $black: #324048;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $black;
-  padding: 30px;
   font-weight: bold;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.casle-contain {
+  padding: 30px;
 }
 
 img {
