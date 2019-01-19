@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       markdown: "",
+      pets: false,
       image: "",
       title: ""
     };
@@ -34,6 +35,8 @@ export default {
   },
 
   mounted() {
+    this.pets = this.place.pets;
+
     this.title = `£${this.place.price} - ${this.place.address}`;
 
     this.image = this.place.images[0];
@@ -63,6 +66,16 @@ export default {
             alt="owo an image"
           >
         </div>
+      </div>
+
+      <div class="pets" @click="pets = !pets">
+        <template v-if="pets">
+          <span>😻</span> - pets considered
+        </template>
+
+        <template v-else>
+          <span>😿</span> - no pets
+        </template>
       </div>
 
       <input type="text" v-model="title">
@@ -104,6 +117,22 @@ $accent: #bba3d0;
 
   &.active {
     border-color: $accent;
+  }
+}
+
+.pets {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  line-height: 1;
+  text-align: left;
+  user-select: none;
+
+  span {
+    font-size: 26px;
+    margin-right: 5px;
+    margin-bottom: -5px;
   }
 }
 
