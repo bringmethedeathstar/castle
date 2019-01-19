@@ -66,4 +66,17 @@ img {
 .fade-leave-to {
   opacity: 0;
 }
+
+.emoji-text {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+
+  span {
+    font-size: 1.7em;
+    margin-right: 5px;
+    margin-bottom: -5px;
+    margin-bottom: -0.2em;
+  }
+}
 </style>

@@ -68,7 +68,7 @@ export default {
         </div>
       </div>
 
-      <div class="pets" @click="pets = !pets">
+      <div class="emoji-text pets" @click="pets = !pets">
         <template v-if="pets">
           <span>😻</span> - pets considered
         </template>
@@ -122,18 +122,9 @@ $accent: #bba3d0;
 
 .pets {
   margin-bottom: 30px;
-  display: flex;
-  align-items: center;
   cursor: pointer;
-  line-height: 1;
-  text-align: left;
   user-select: none;
-
-  span {
-    font-size: 26px;
-    margin-right: 5px;
-    margin-bottom: -5px;
-  }
+  text-align: left;
 }
 
 input,
