@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    mode: 'blank',
+    mode: 'search',
     url: '',
     host: '',
     search: '',

@@ -4,7 +4,6 @@ import { mapState } from "vuex";
 import Float from "@/components/Float";
 import Input from "@/components/Input";
 import Host from "@/components/Host";
-import Wait from "@/components/Wait";
 import Edit from "@/components/Edit";
 
 export default {
@@ -12,7 +11,6 @@ export default {
     Float,
     Input,
     Host,
-    Wait,
     Edit
   },
 
@@ -23,19 +21,19 @@ export default {
 <template>
   <div id="castle">
     <div class="casle-contain">
-      <Wait v-if="mode === 'wait'"/>
+      <transition name="fade" mode="out-in">
+        <Edit v-if="mode === 'edit'" key="edit"/>
 
-      <Edit v-if="mode === 'edit'"/>
+        <div v-if="mode === 'search'" key="search">
+          <Float/>
 
-      <template v-else>
-        <Float/>
+          <h1>castle.</h1>
 
-        <h1>castle.</h1>
+          <Input/>
+        </div>
+      </transition>
 
-        <Input/>
-
-        <Host/>
-      </template>
+      <Host/>
     </div>
   </div>
 </template>
@@ -68,5 +66,14 @@ $accent: #bba3d0;
 
 img {
   width: 100%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
