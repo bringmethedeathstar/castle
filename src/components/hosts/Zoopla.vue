@@ -18,28 +18,32 @@ export default {
 
         let data = res.data;
 
-        let meta = JSON.parse(data.replace(/\r?\n|\r/g, "").replace(/[\s\S]*ZPG\.trackData\.taxonomy = (.*?);[\s\S]*/, '$1').replace(/\s\s+/g, ' ').replace(/(\S+):\s/gm, '"$1": '));
+        let meta = JSON.parse(
+          data
+            .replace(/\r?\n|\r/g, "")
+            .replace(/[\s\S]*ZPG\.trackData\.taxonomy = (.*?);[\s\S]*/, "$1")
+            .replace(/\s\s+/g, " ")
+            .replace(/(\S+):\s/gm, '"$1": ')
+        );
 
-        console.log(meta);
-        console.log(data);
+        this.property.images = data
+          .match(/<img src=".*" class="dp-gallery__image" alt=".*">/gm)
+          .map(str =>
+            str.replace(
+              /<img src="(.*)" class="dp-gallery__image" alt=".*">/gm,
+              "$1"
+            )
+          );
 
-        // this.property.images = data
-        //   .match(/<meta itemprop="contentUrl" content=".*" \/>/gm)
-        //   .map(str =>
-        //     str.replace(
-        //       /<meta itemprop="contentUrl" content="(.*)" \/>/gm,
-        //       "$1"
-        //     )
-        //   );
-
-        // this.property.description = data
-        //   .replace(/\r?\n|\r/g, "")
-        //   .replace(/[\s\S]*<div class="dp-description__text">(.*?)<\/div>[\s\S]*/gm, "$1")
-        //   .replace(/^\s*/, "");
-// .match(/<div class="dp-description__text">(.*)<\/div>/)
-          console.log(data.replace(/\r?\n|\r/g, ""))
-        // console.log(this.property.description);
-
+        this.property.description = data
+          .replace(/\r?\n|\r/g, "")
+          .replace(
+            /[\s\S]*<div class="dp-description__text">(.*?)<\/div>[\s\S]*/gm,
+            "$1"
+          )
+          .replace(/^\s*/, "")
+          .replace(/<br>/g, "\n")
+          .replace(/<strong>(.*)<\/strong>/g, "**$1**");
 
         if (data.match(/no pets?|pets? not/i)) {
           this.property.pets = false;
@@ -54,7 +58,7 @@ export default {
         // this.property.postcode = meta.location.postcode;
         this.property.type = meta.furnished_state;
 
-        // this.place(this.property);
+        this.place(this.property);
       } catch (e) {
         // eslint-disable-next-line
         console.error(e);
