@@ -22,10 +22,10 @@ export default {
           data.replace(/[\s\S]*}\('property',({.*})[\s\S]*/gm, "$1")
         );
 
-        this.property.title = data
-          .replace(/[\s\S]*<.*itemprop="name".*>(.*)<\/.*>[\s\S]*/gm, "$1")
-          .replace("to rent", "")
-          .replace("to let", "");
+        // this.property.title = data
+        //   .replace(/[\s\S]*<.*itemprop="name".*>(.*)<\/.*>[\s\S]*/gm, "$1")
+        //   .replace("to rent", "")
+        //   .replace("to let", "");
 
         this.property.images = data
           .match(/<meta itemprop="contentUrl" content=".*" \/>/gm)

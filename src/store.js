@@ -10,7 +10,7 @@ export default new Vuex.Store({
     host: '',
     search: '',
     place: {
-      title: '',
+      // title: '',
       images: [],
       address: '',
       postcode: '',
