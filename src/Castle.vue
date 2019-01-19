@@ -20,11 +20,7 @@ export default {
   <div id="castle">
     <div class="casle-contain">
       <transition name="fade" mode="out-in">
-        <Edit v-if="mode === 'edit'" key="edit"/>
-
-        <div v-if="mode === 'search'" key="search">
-          <Search/>
-        </div>
+        <component :is="mode"></component>
       </transition>
 
       <Host/>
@@ -64,7 +60,7 @@ img {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 1s ease;
+  transition: opacity 0.3s ease;
 }
 .fade-enter,
 .fade-leave-to {
