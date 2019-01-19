@@ -50,19 +50,10 @@ export default new Vuex.Store({
       commit('setMode', mode);
     },
 
-    search({ commit }, url) {
-      commit('setMode', 'wait');
-
+    search({ commit }, { url, host }) {
+      commit('setMode', false);
+      commit('setHost', host);
       commit('setUrl', url);
-
-      commit(
-        'setHost',
-        url
-          .replace(/.*:\/\//, '')
-          .replace('www.', '')
-          .split('.')[0]
-      );
-
       commit('setSearch');
     },
 
