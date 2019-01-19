@@ -46,11 +46,9 @@ export default {
           "$1"
         );
 
-        if (data.match(/no pets|pets not/i)) {
+        if (data.match(/no pets?|pets? not/i)) {
           this.property.pets = false;
-        } else if (
-          data.match(/pets considered|pets allowed|pets permitted|pets by/i)
-        ) {
+        } else if (data.match(/pets? (considered|allowed|permitted|by)/i)) {
           this.property.pets = true;
         }
 
