@@ -39,11 +39,11 @@ export default {
     this.image = this.place.images[0];
 
     // need to tidy this
-    this.markdown = `### Description\n${
-      this.place.description
+    this.markdown = `**Price:** £${this.place.price}\n\n**Bedrooms:** ${
+      this.place.rooms
     }\n\n**Address:** ${this.place.address}, ${
       this.place.postcode
-    }\n\n**Price:** £${this.place.price}\n\n**Bedrooms:** ${this.place.rooms}`;
+    }\n\n### Description\n${this.place.description}`;
 
     autosize(this.$refs.markdown);
   }

@@ -36,12 +36,10 @@ export default {
             )
           );
 
-        // this.property.description = data.replace(
-        //   /[\s\S]*<.*itemprop="description".*>(.*)<\/.*>[\s\S]*/gm,
-        //   "$1"
-        // );
-
-        this.property.description = "tba";
+        this.property.description = data
+          .replace(/\r?\n|\r/g, "")
+          .replace(/[\s\S]*<p itemprop="description">(.*?)<\/p>[\s\S]*/gm, "$1")
+          .replace(/^\s*/, "");
 
         this.property.address = data.replace(
           /[\s\S]*<meta itemprop="streetAddress" content="(.*)" \/>[\s\S]*/gm,
