@@ -1,17 +1,15 @@
 <script>
 import { mapState } from "vuex";
 
-import Float from "@/components/Float";
-import Input from "@/components/Input";
 import Host from "@/components/Host";
 import Edit from "@/components/Edit";
+import Search from "@/components/Search";
 
 export default {
   components: {
-    Float,
-    Input,
     Host,
-    Edit
+    Edit,
+    Search
   },
 
   computed: mapState(["mode"])
@@ -25,11 +23,7 @@ export default {
         <Edit v-if="mode === 'edit'" key="edit"/>
 
         <div v-if="mode === 'search'" key="search">
-          <Float/>
-
-          <h1>castle.</h1>
-
-          <Input/>
+          <Search/>
         </div>
       </transition>
 
