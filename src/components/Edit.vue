@@ -1,6 +1,7 @@
 <script>
 import { mapState } from "vuex";
 import marked from "marked";
+import autosize from "autosize";
 
 export default {
   data() {
@@ -22,6 +23,13 @@ export default {
   methods: {
     compile(e) {
       this.markdown = e.target.value;
+      this.grow();
+    },
+
+    grow() {
+      console.log("grow");
+
+      autosize.update(this.$refs.markdown);
     }
   },
 
@@ -36,6 +44,8 @@ export default {
     }\n\n**Address:** ${this.place.address}, ${
       this.place.postcode
     }\n\n**Price:** £${this.place.price}\n\n**Bedrooms:** ${this.place.rooms}`;
+
+    autosize(this.$refs.markdown);
   }
 };
 </script>
@@ -57,7 +67,13 @@ export default {
 
       <input type="text" v-model="title">
       
-      <textarea @input="compile" :value="markdown" name="markdown" rows="10"></textarea>
+      <textarea
+        ref="markdown"
+        @input="compile"
+        @focus.once="grow"
+        :value="markdown"
+        name="markdown"
+      ></textarea>
     </div>
 
     <div class="col">
