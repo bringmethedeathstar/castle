@@ -80,6 +80,12 @@ img {
   }
 }
 
+.label {
+  display: block;
+  color: $accent;
+  font-size: 12px;
+}
+
 pre {
   padding: 15px;
   text-align: left;
