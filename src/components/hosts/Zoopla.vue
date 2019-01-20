@@ -59,8 +59,21 @@ export default {
         this.property.propertyId = meta.listing_id;
         this.property.rooms = meta.num_beds;
         this.property.price = meta.price;
-        // this.property.postcode = meta.location.postcode;
+        this.property.postcode = meta.outcode;
         this.property.type = meta.furnished_state;
+        this.property.number = 0;
+
+        let monthly = data.replace(/[\s\S]*name: 'council_tax',\s+value: Math\.round\( (\d+) \)[\s\S]*/, '$1');
+
+        let tax = {
+          number: 0,
+          address: this.property.address,
+          band: data.replace(/[\s\S]*Council tax band (.)[\s\S]*/, '$1'),
+          year: monthly * 10,
+          month: parseInt(monthly),
+        }
+
+        this.tax([tax]);
 
         this.place(this.property);
       } catch (e) {
@@ -69,7 +82,7 @@ export default {
       }
     },
 
-    ...mapActions(["place"])
+    ...mapActions(["place", 'tax'])
   },
 
   computed: mapState(["url"]),
