@@ -44,8 +44,8 @@ export default {
     // need to tidy this
     this.markdown = `**Price:** £${this.place.price}\n\n**Bedrooms:** ${
       this.place.rooms
-    }\n\n**Address:** ${this.place.address}, ${
-      this.place.postcode
+    }\n\n**Address:** ${this.place.address} ${
+      this.place.postcode ? ", " + this.place.postcode : ""
     }\n\n### Description\n${this.place.description}`;
 
     autosize(this.$refs.markdown);
@@ -56,8 +56,8 @@ export default {
 <template>
   <div class="row justify-content-between">
     <div class="col-6">
-      <div class="row">
-        <div class="col-4" v-for="img in place.images" :key="img">
+      <div class="gallery">
+        <div class="gallery-col" v-for="img in place.images" :key="img">
           <img
             @click="image = img"
             class="image-select"
@@ -108,17 +108,6 @@ export default {
 
 <style lang="scss" scoped>
 $accent: #bba3d0;
-
-.image-select {
-  margin-bottom: 30px;
-  cursor: pointer;
-  border: 2px dashed transparent;
-  transition: border-color 0.3s;
-
-  &.active {
-    border-color: $accent;
-  }
-}
 
 .pets {
   margin-bottom: 30px;
@@ -186,5 +175,41 @@ textarea {
   padding: 20px 40px;
   max-height: 300px;
   overflow: scroll;
+}
+
+.gallery {
+  position: relative;
+  display: flex;
+  overflow: scroll;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.gallery-col {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  &:first-of-type {
+    padding-left: 0;
+  }
+  &:last-of-type {
+    padding-right: 0;
+  }
+}
+
+.image-select {
+  width: 160px;
+  height: 120px;
+  cursor: pointer;
+  object-fit: cover;
+
+  border: 2px dashed transparent;
+  transition: border-color 0.3s;
+
+  &.active {
+    border-color: $accent;
+  }
 }
 </style>
