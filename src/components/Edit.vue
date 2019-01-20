@@ -93,11 +93,24 @@ export default {
         </template>
       </div>
 
-      <div class="tax-row">
-        <div class="tax-col">{{ band.band }}</div>
-        <div class="tax-col">£{{ band.year }}/year</div>
-        <div class="tax-col">£{{ band.month }}/month</div>
-        <div class="tax-col">
+      <div class="row">
+        <div class="col-auto">
+          <span class="label">Band</span>
+          {{ band.band }}
+        </div>
+
+        <div class="col-auto">
+          <span class="label">Per Year</span>
+          £{{ band.year }}
+        </div>
+
+        <div class="col-auto">
+          <span class="label">Per Month</span>
+          £{{ band.month }}
+        </div>
+
+        <div class="col">
+          <span class="label">Select</span>
           <select @change="getTax" class="tax-select">
             <option v-for="item in tax" :value="item[0]" :key="item[0]">{{ item[0].toLowerCase() }}</option>
           </select>
