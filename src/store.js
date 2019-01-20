@@ -71,23 +71,33 @@ export default new Vuex.Store({
           )
       );
 
+      let r = /<td( align="center")?>(.+?)<\/td>/g;
+
       let tax = res.data
         .replace(/\r?\n|\r/g, '')
         .match(/<tr>.+?<\/tr>/g)
         .map(row => {
-          let match = row.match(/<td( align="center")?>.+?<\/td>/g);
+          let match = row.match(r);
 
           if (match) {
             return match.map(col =>
               col
-                .replace(/<td( align="center")?>(.+?)<\/td>/g, '$2')
+                .replace(r, '$2')
                 .replace(/^\s|\s$/g, '')
                 .replace('&pound;', '')
             );
           }
-        });
+        })
+        .filter(t => typeof t !== 'undefined')
+        .map(item => ({
+          number: item[0].replace(/(.+?),.*/, '$1'),
+          address: item[0],
+          band: item[1],
+          year: parseInt(item[2]),
+          month: Math.ceil(item[2] / 12),
+        }));
 
-      commit('setTax', tax.filter(t => typeof t !== 'undefined'));
+      commit('setTax', tax);
       commit('setPlace', place);
       commit('setMode', 'edit');
     },

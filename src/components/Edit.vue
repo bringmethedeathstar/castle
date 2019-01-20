@@ -33,22 +33,13 @@ export default {
     },
 
     getTax(e) {
-      let tax = this.tax.filter(t => t[0] === e.target.value)[0];
-
-      this.band = {
-        address: tax[0],
-        band: tax[1],
-        year: parseInt(tax[2]),
-        month: Math.ceil(tax[2] / 12)
-      };
+      this.band = this.tax.find(t => t.number === e.target.value);
     }
   },
 
   mounted() {
     this.pets = this.place.pets;
-
     this.title = `£${this.place.price} - ${this.place.address}`;
-
     this.image = this.place.images[0];
 
     // need to tidy this
@@ -112,7 +103,11 @@ export default {
         <div class="col">
           <span class="label">Select</span>
           <select @change="getTax" class="tax-select">
-            <option v-for="item in tax" :value="item[0]" :key="item[0]">{{ item[0].toLowerCase() }}</option>
+            <option
+              v-for="item in tax"
+              :value="item.number"
+              :key="item.number"
+            >{{ item.address.toLowerCase() }}</option>
           </select>
         </div>
       </div>
