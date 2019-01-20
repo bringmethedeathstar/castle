@@ -73,6 +73,7 @@ export default {
         </div>
       </div>
 
+      <span class="label">Labels</span>
       <div class="emoji-text pets" @click="pets = !pets">
         <template v-if="pets == 'idk'">
           <span>🙀</span> - unsure about pets
@@ -116,8 +117,10 @@ export default {
         </div>
       </div>
 
+      <span class="label">Title</span>
       <input type="text" v-model="title">
       
+      <span class="label">Description</span>
       <textarea
         ref="markdown"
         @input="compile"
