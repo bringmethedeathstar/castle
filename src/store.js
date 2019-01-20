@@ -64,45 +64,13 @@ export default new Vuex.Store({
       commit('setSearch');
     },
 
-    async place({ commit }, place) {
-      try {
-        let url = `http://www.mycounciltax.org.uk/results?postcode=${
-          place.postcode
-        }`;
+    place({ commit }, place) {
+      commit('setPlace', place);
+      commit('setMode', 'edit');
+    },
 
-        let res = await axios({ params: { url } });
-        let r = /<td( align="center")?>(.+?)<\/td>/g;
-        let tax = res.data
-          .replace(/\r?\n|\r/g, '')
-          .match(/<tr>.+?<\/tr>/g)
-          .map(row => {
-            let match = row.match(r);
-
-            if (match) {
-              return match.map(col =>
-                col
-                  .replace(r, '$2')
-                  .replace(/^\s|\s$/g, '')
-                  .replace('&pound;', '')
-              );
-            }
-          })
-          .filter(t => typeof t !== 'undefined')
-          .map(item => ({
-            number: item[0].replace(/(.+?),.*/, '$1'),
-            address: item[0],
-            band: item[1],
-            year: parseInt(item[2]),
-            month: Math.ceil(item[2] / 12),
-          }));
-
-        commit('setTax', tax);
-        commit('setPlace', place);
-        commit('setMode', 'edit');
-      } catch (e) {
-        // eslint-disable-next-line
-        console.error(e);
-      }
+    tax({ commit }, tax) {
+      commit('setTax', tax);
     },
   },
 });

@@ -69,6 +69,37 @@ export default {
         this.property.postcode = meta.location.postcode;
         this.property.type = meta.propertyInfo.furnishedType;
 
+        let url = `http://www.mycounciltax.org.uk/results?postcode=${
+          this.property.postcode
+        }`;
+
+        let q = await axios({ params: { url } });
+        let r = /<td( align="center")?>(.+?)<\/td>/g;
+        let tax = q.data
+          .replace(/\r?\n|\r/g, "")
+          .match(/<tr>.+?<\/tr>/g)
+          .map(row => {
+            let match = row.match(r);
+
+            if (match) {
+              return match.map(col =>
+                col
+                  .replace(r, "$2")
+                  .replace(/^\s|\s$/g, "")
+                  .replace("&pound;", "")
+              );
+            }
+          })
+          .filter(t => typeof t !== "undefined")
+          .map(item => ({
+            number: item[0].replace(/(.+?),.*/, "$1"),
+            address: item[0],
+            band: item[1],
+            year: parseInt(item[2]),
+            month: Math.ceil(item[2] / 10)
+          }));
+
+        this.tax(tax);
         this.place(this.property);
       } catch (e) {
         // eslint-disable-next-line
@@ -76,7 +107,7 @@ export default {
       }
     },
 
-    ...mapActions(["place"])
+    ...mapActions(["place", "tax"])
   },
 
   computed: mapState(["url"]),
