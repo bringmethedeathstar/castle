@@ -79,4 +79,11 @@ img {
     margin-bottom: -0.2em;
   }
 }
+
+pre {
+  padding: 15px;
+  text-align: left;
+  font-size: 10px;
+  border: 2px dashed coral;
+}
 </style>
