@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios';
+import axios from '@/plugins/axios';
 
 Vue.use(Vuex);
 
@@ -65,12 +65,11 @@ export default new Vuex.Store({
     },
 
     async place({ commit }, place) {
-      let res = await axios.get(
-        '.netlify/functions/fetch?url=' +
-          encodeURIComponent(
-            `http://www.mycounciltax.org.uk/results?postcode=${place.postcode}`
-          )
-      );
+      let url = `http://www.mycounciltax.org.uk/results?postcode=${
+        place.postcode
+      }`;
+
+      let res = await axios({ params: { url } });
 
       let r = /<td( align="center")?>(.+?)<\/td>/g;
 

@@ -1,6 +1,6 @@
 <script>
 import { mapState, mapActions } from "vuex";
-import axios from "axios";
+import axios from "@/plugins/axios";
 
 export default {
   data() {
@@ -12,9 +12,9 @@ export default {
   methods: {
     async fetch() {
       try {
-        let res = await axios.get(
-          ".netlify/functions/fetch?url=" + encodeURIComponent(this.url)
-        );
+        let res = await axios({
+          params: { url: this.url }
+        });
 
         let data = res.data;
 
