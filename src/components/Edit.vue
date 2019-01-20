@@ -35,7 +35,7 @@ export default {
     setTax(i) {
       if (typeof i === "object") i = i.target.value;
 
-      this.band = this.tax.find(t => t.number === i);
+      this.band = this.tax.find(t => t.number === i) || this.tax[0];
     }
   },
 
