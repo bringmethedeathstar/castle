@@ -48,6 +48,11 @@ export default {
           "$1"
         );
 
+        this.property.number = this.property.address.replace(
+          /(.+?),? .*/,
+          "$1"
+        );
+
         this.property.pets = "idk";
 
         if (data.match(/no pets?|pets? not/i)) {
