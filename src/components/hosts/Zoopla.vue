@@ -42,7 +42,7 @@ export default {
             "$1"
           )
           .replace(/^\s*/, "")
-          .replace(/<br>/g, "\n")
+          .replace(/<br>/g, "\n\n")
           .replace(/<strong>(.*)<\/strong>/g, "**$1**");
 
         if (data.match(/no pets?|pets? not/i)) {
