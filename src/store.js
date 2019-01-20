@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 
 Vue.use(Vuex);
 
@@ -9,6 +10,7 @@ export default new Vuex.Store({
     url: '',
     host: '',
     search: '',
+    tax: [],
     place: {
       // title: '',
       images: [],
@@ -43,6 +45,10 @@ export default new Vuex.Store({
     setPlace(state, place) {
       state.place = place;
     },
+
+    setTax(state, tax) {
+      state.tax = tax;
+    },
   },
 
   actions: {
@@ -57,10 +63,33 @@ export default new Vuex.Store({
       commit('setSearch');
     },
 
-    place({ commit }, place) {
-      commit('setMode', 'edit');
+    async place({ commit }, place) {
+      let res = await axios.get(
+        '.netlify/functions/fetch?url=' +
+          encodeURIComponent(
+            `http://www.mycounciltax.org.uk/results?postcode=${place.postcode}`
+          )
+      );
 
+      let tax = res.data
+        .replace(/\r?\n|\r/g, '')
+        .match(/<tr>.+?<\/tr>/g)
+        .map(row => {
+          let match = row.match(/<td( align="center")?>.+?<\/td>/g);
+
+          if (match) {
+            return match.map(col =>
+              col
+                .replace(/<td( align="center")?>(.+?)<\/td>/g, '$2')
+                .replace(/^\s|\s$/g, '')
+                .replace('&pound;', '')
+            );
+          }
+        });
+
+      commit('setTax', tax.filter(t => typeof t !== 'undefined'));
       commit('setPlace', place);
+      commit('setMode', 'edit');
     },
   },
 });
