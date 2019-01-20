@@ -32,8 +32,10 @@ export default {
       autosize.update(this.$refs.markdown);
     },
 
-    getTax(e) {
-      this.band = this.tax.find(t => t.number === e.target.value);
+    setTax(i) {
+      if (typeof i === "object") i = i.target.value;
+
+      this.band = this.tax.find(t => t.number === i);
     }
   },
 
@@ -45,9 +47,11 @@ export default {
     // need to tidy this
     this.markdown = `**Price:** £${this.place.price}\n\n**Bedrooms:** ${
       this.place.rooms
-    }\n\n**Address:** ${this.place.address} ${
+    }\n\n**Address:** ${this.place.address}${
       this.place.postcode ? ", " + this.place.postcode : ""
     }\n\n### Description\n${this.place.description}`;
+
+    this.setTax(this.place.number);
 
     autosize(this.$refs.markdown);
   }
@@ -57,7 +61,6 @@ export default {
 <template>
   <div class="row justify-content-between">
     <div class="col-6">
-      <pre>{{ band }}</pre>
       <div class="gallery">
         <div class="gallery-col" v-for="img in place.images" :key="img">
           <img
@@ -102,12 +105,13 @@ export default {
 
         <div class="col">
           <span class="label">Select</span>
-          <select @change="getTax" class="tax-select">
+          <select @change="setTax" class="tax-select">
             <option
               v-for="item in tax"
               :value="item.number"
               :key="item.number"
-            >{{ item.address.toLowerCase() }}</option>
+              :selected="item.number === band.number"
+            >{{ item.address.toLowerCase() }} ({{ item.band }} - £{{ item.year }} - £{{ item.month }})</option>
           </select>
         </div>
       </div>
