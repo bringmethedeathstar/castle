@@ -220,7 +220,7 @@ textarea {
 
 .trello-body {
   text-align: left;
-  padding: 20px 40px;
+  padding: 20px;
   max-height: 300px;
   overflow: scroll;
 }
