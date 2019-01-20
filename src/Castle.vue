@@ -39,7 +39,6 @@ $accent: #bba3d0;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: $black;
   font-weight: bold;
   max-width: 1200px;

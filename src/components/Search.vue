@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="search-contain">
     <Float/>
 
     <h1>castle.</h1>
@@ -21,4 +21,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.search-contain {
+  text-align: center;
+}
 </style>
