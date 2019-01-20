@@ -9,7 +9,8 @@ export default {
       markdown: "",
       pets: false,
       image: "",
-      title: ""
+      title: "",
+      band: {}
     };
   },
 
@@ -18,7 +19,7 @@ export default {
       return marked(this.markdown, { sanitize: true });
     },
 
-    ...mapState(["place"])
+    ...mapState(["place", "tax"])
   },
 
   methods: {
@@ -28,9 +29,18 @@ export default {
     },
 
     grow() {
-      console.log("grow");
-
       autosize.update(this.$refs.markdown);
+    },
+
+    getTax(e) {
+      let tax = this.tax.filter(t => t[0] === e.target.value)[0];
+
+      this.band = {
+        address: tax[0],
+        band: tax[1],
+        year: parseInt(tax[2]),
+        month: Math.ceil(tax[2] / 12)
+      };
     }
   },
 
@@ -56,6 +66,7 @@ export default {
 <template>
   <div class="row justify-content-between">
     <div class="col-6">
+      <pre>{{ band }}</pre>
       <div class="gallery">
         <div class="gallery-col" v-for="img in place.images" :key="img">
           <img
@@ -80,6 +91,17 @@ export default {
         <template v-else>
           <span>😿</span> - no pets
         </template>
+      </div>
+
+      <div class="tax-row">
+        <div class="tax-col">{{ band.band }}</div>
+        <div class="tax-col">£{{ band.year }}/year</div>
+        <div class="tax-col">£{{ band.month }}/month</div>
+        <div class="tax-col">
+          <select @change="getTax" class="tax-select">
+            <option v-for="item in tax" :value="item[0]" :key="item[0]">{{ item[0].toLowerCase() }}</option>
+          </select>
+        </div>
       </div>
 
       <input type="text" v-model="title">
@@ -121,12 +143,15 @@ $accent: #bba3d0;
 }
 
 input,
+select,
 textarea {
   width: 100%;
   border: 2px dashed $accent;
   padding: 15px;
   text-align-last: left;
   margin-bottom: 30px;
+  border-radius: 0;
+  background: none;
 
   &:focus {
     outline: none;
@@ -136,6 +161,10 @@ textarea {
 textarea {
   margin-bottom: 0;
   min-height: 330px;
+}
+
+.tax-select {
+  text-transform: capitalize;
 }
 
 .split {
