@@ -39,7 +39,9 @@ export default {
         this.property.description = data
           .replace(/\r?\n|\r/g, "")
           .replace(/[\s\S]*<p itemprop="description">(.*?)<\/p>[\s\S]*/gm, "$1")
-          .replace(/^\s*/, "");
+          .replace(/^\s*/, "")
+          .replace(/<br\s?\/?>/g, "\n\n")
+          .replace(/<strong>(.*)<\/strong>/g, "**$1**");
 
         this.property.address = data.replace(
           /[\s\S]*<meta itemprop="streetAddress" content="(.*)" \/>[\s\S]*/gm,

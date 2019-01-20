@@ -42,7 +42,7 @@ export default {
             "$1"
           )
           .replace(/^\s*/, "")
-          .replace(/<br>/g, "\n\n")
+          .replace(/<br\s?\/?>/g, "\n\n")
           .replace(/<strong>(.*)<\/strong>/g, "**$1**");
 
         this.property.pets = "idk";
