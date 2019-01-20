@@ -69,7 +69,11 @@ export default {
       </div>
 
       <div class="emoji-text pets" @click="pets = !pets">
-        <template v-if="pets">
+        <template v-if="pets == 'idk'">
+          <span>🙀</span> - unsure about pets
+        </template>
+
+        <template v-else-if="pets">
           <span>😻</span> - pets considered
         </template>
 

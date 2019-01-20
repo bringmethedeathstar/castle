@@ -45,9 +45,13 @@ export default {
           .replace(/<br>/g, "\n\n")
           .replace(/<strong>(.*)<\/strong>/g, "**$1**");
 
+        this.property.pets = "idk";
+
         if (data.match(/no pets?|pets? not/i)) {
           this.property.pets = false;
-        } else if (data.match(/pets? (considered|allowed|permitted|by)/i)) {
+        } else if (
+          data.match(/pets? (considered|allowed|permitted|welcome|by)/i)
+        ) {
           this.property.pets = true;
         }
 
