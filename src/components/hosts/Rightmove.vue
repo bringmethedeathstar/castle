@@ -48,10 +48,7 @@ export default {
           "$1"
         );
 
-        this.property.number = this.property.address.replace(
-          /(.+?),? .*/,
-          "$1"
-        );
+        this.property.number = this.property.address.replace(/^(.+?)\s/, "$1");
 
         this.property.pets = "idk";
 
