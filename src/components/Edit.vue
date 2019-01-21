@@ -142,6 +142,13 @@ export default {
           <h1>{{ title }}</h1>
           <div v-html="compiled"></div>
         </div>
+
+        <div class="buttons">
+          <button type="button" class="cancel">
+            <span>Reset</span>
+          </button>
+          <button type="button">Save</button>
+        </div>
       </div>
     </div>
   </div>
@@ -202,7 +209,6 @@ textarea {
   width: 370px;
   position: fixed;
   border-radius: 2px;
-  background-color: #ebeef0;
   color: #17394d;
   font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -221,8 +227,10 @@ textarea {
 .trello-body {
   text-align: left;
   padding: 20px;
-  max-height: 300px;
+  max-height: 250px;
   overflow: scroll;
+  background-color: #ebeef0;
+  margin-bottom: 15px;
 }
 
 .gallery {

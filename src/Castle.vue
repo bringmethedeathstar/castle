@@ -91,4 +91,84 @@ pre {
   font-size: 10px;
   border: 2px dashed coral;
 }
+
+button {
+  padding: 5px 25px;
+  background-color: transparent;
+  border: 2px solid $accent;
+  color: $accent;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+
+  &:hover {
+    // border-color: white;
+    background-color: $accent;
+    color: white;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.cancel {
+  border-color: transparent;
+
+  &:hover {
+    background-color: transparent;
+    color: $accent;
+
+    span {
+      &:before {
+        transform: translateX(-100%);
+        transition: transform 0.15s ease;
+      }
+      &:after {
+        transform: translateX(0);
+        transition: transform 0.15s 0.3s ease;
+      }
+    }
+  }
+
+  span {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 1px;
+    position: relative;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    &:before {
+      background-color: $accent;
+      transition: transform 0.15s 0.3s ease;
+    }
+    &:after {
+      background-color: $accent;
+      transform: translateX(100%);
+      transition: transform 0.15s ease;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: -5px;
+  margin-right: -5px;
+
+  button {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
 </style>
