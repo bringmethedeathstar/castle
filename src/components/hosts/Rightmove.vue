@@ -48,7 +48,9 @@ export default {
           "$1"
         );
 
-        this.property.number = this.property.address.replace(/^(.+?)\s/, "$1");
+        this.property.number = this.property.address
+          .replace(/^(.+?)(\s|,).*/, "$1")
+          .toLowerCase();
 
         this.property.pets = "idk";
 
@@ -89,7 +91,7 @@ export default {
           })
           .filter(t => typeof t !== "undefined")
           .map(item => ({
-            number: item[0].replace(/(.+?),.*/, "$1"),
+            number: item[0].replace(/(.+?)(\s|,).*/, "$1").toLowerCase(),
             address: item[0],
             band: item[1],
             year: parseInt(item[2]),
