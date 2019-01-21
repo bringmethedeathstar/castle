@@ -36,6 +36,10 @@ export default {
       if (typeof i === "object") i = i.target.value;
 
       this.band = this.tax.find(t => t.number === i) || this.tax[0];
+    },
+
+    refresh() {
+      location.reload();
     }
   },
 
@@ -144,7 +148,7 @@ export default {
         </div>
 
         <div class="buttons">
-          <button type="button" class="cancel">
+          <button type="button" class="cancel" @click="refresh">
             <span>Reset</span>
           </button>
           <button type="button">Save</button>
