@@ -3,13 +3,21 @@ import { mapState } from "vuex";
 
 import Host from "@/components/Host";
 import Edit from "@/components/Edit";
+import Auth from "@/components/Auth";
 import Search from "@/components/Search";
 
 export default {
   components: {
     Host,
     Edit,
+    Auth,
     Search
+  },
+
+  data() {
+    return {
+      token: localStorage.trello_token
+    };
   },
 
   computed: mapState(["mode"])
@@ -19,11 +27,15 @@ export default {
 <template>
   <div id="castle">
     <div class="casle-contain">
-      <transition name="fade" mode="out-in">
-        <component :is="mode"></component>
-      </transition>
+      <Auth v-if="!token"/>
 
-      <Host/>
+      <template v-else>
+        <transition name="fade" mode="out-in">
+          <component :is="mode"></component>
+        </transition>
+
+        <Host/>
+      </template>
     </div>
   </div>
 </template>

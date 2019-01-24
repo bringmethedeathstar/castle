@@ -6,8 +6,9 @@ export default {
     return {
       allow: ["rightmove", "zoopla"],
       error: false,
-      url: "https://www.rightmove.co.uk/property-to-rent/property-69395305.html"
-      // url: "https://www.zoopla.co.uk/to-rent/details/50175206"
+      url:
+        "https://www.rightmove.co.uk/property-to-rent/property-69395305.html",
+      url: "https://www.zoopla.co.uk/to-rent/details/50186005"
       // url: "https://www.primelocation.com/to-rent/details/50121940"
     };
   },
