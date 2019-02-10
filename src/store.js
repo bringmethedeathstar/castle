@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     mode: 'search',
+    token: localStorage.trello_token,
     url: '',
     host: '',
     search: '',
@@ -50,6 +51,10 @@ export default new Vuex.Store({
     setTax(state, tax) {
       state.tax = tax;
     },
+
+    setToken(state, token) {
+      state.token = token;
+    },
   },
 
   actions: {
@@ -71,6 +76,12 @@ export default new Vuex.Store({
 
     tax({ commit }, tax) {
       commit('setTax', tax);
+    },
+
+    token({ commit }, token) {
+      token = token || localStorage.trello_token;
+
+      commit('setToken', token);
     },
   },
 });

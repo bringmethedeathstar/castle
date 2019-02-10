@@ -14,13 +14,7 @@ export default {
     Search
   },
 
-  data() {
-    return {
-      token: localStorage.trello_token
-    };
-  },
-
-  computed: mapState(["mode"])
+  computed: mapState(["mode", "token"])
 };
 </script>
 

@@ -1,26 +1,32 @@
 <script>
+import { mapActions } from "vuex";
+
 export default {
-  data() {
-    return {};
+  methods: {
+    auth() {
+      let castle = this;
+
+      Trello.authorize({
+        type: "popup",
+        name: "🏰 Castle",
+        scope: { read: "true", write: "true" },
+        expiration: "never",
+        success() {
+          console.log("Trello Authorized 👍🏻");
+
+          castle.token();
+        },
+        error(e) {
+          console.error(e);
+        }
+      });
+    },
+
+    ...mapActions(["token"])
   },
 
   mounted() {
-    Trello.authorize({
-      type: "popup",
-      name: "🏰 Castle",
-      scope: {
-        read: "true",
-        write: "true"
-      },
-      expiration: "never",
-      success() {
-        console.log("Trello Authorized 👍🏻");
-      },
-      error(e) {
-        console.log("Oh heck 👎🏻");
-        console.error(e);
-      }
-    });
+    this.auth();
   }
 };
 </script>
