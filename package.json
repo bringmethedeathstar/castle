@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build; netlify-lambda build src/lambda",
-    "dev": "vue-cli-service serve"
+    "dev": "vue-cli-service serve",
+    "start": "npm run dev"
   },
   "dependencies": {
     "autosize": "^4.0.2",
