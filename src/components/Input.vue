@@ -30,13 +30,17 @@ export default {
     },
 
     ...mapActions(["search"])
+  },
+
+  mounted() {
+    this.$refs.in.focus();
   }
 };
 </script>
 
 <template>
   <div>
-    <input type="text" placeholder="search me" v-model="url" @keyup.enter="doSearch">
+    <input ref="in" type="text" placeholder="search me" v-model="url" @keyup.enter="doSearch">
 
     <div class="emoji-text error" :class="{ active: error }">
       <span>🤕</span>
@@ -57,6 +61,7 @@ input {
   text-align: center;
   font-weight: bold;
   margin-bottom: 15px;
+  background-color: transparent;
 
   &:focus {
     outline: none;
