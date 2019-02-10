@@ -47,6 +47,10 @@ export default {
 $black: #324048;
 $accent: #bba3d0;
 
+body {
+  background-color: #f5f5f5;
+}
+
 #castle {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
