@@ -21,9 +21,9 @@ export default {
 <template>
   <div id="castle">
     <div class="casle-contain">
-      <Auth v-if="!token"/>
+      <!-- <Auth v-if="!token"/> -->
 
-      <template v-else>
+      <template>
         <transition name="fade" mode="out-in">
           <component :is="mode"></component>
         </transition>
