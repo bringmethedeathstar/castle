@@ -12,7 +12,7 @@
     "autosize": "^4.0.2",
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
-    "marked": "^0.6.0",
+    "marked": "^0.7.0",
     "netlify-lambda": "^1.2.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
